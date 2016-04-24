@@ -1105,7 +1105,8 @@ ngx_http_image_process(ngx_http_request_t *r)
     }
     if (conf->wmcv || conf->watermark.data) {
         ngx_str_t  watermark_value;
-        ngx_http_image_resize = ngx_http_image_filter_get_str_value(r, conf->wmcv, conf->watermark);
+        watermark_value = ngx_http_image_filter_get_str_value(r, conf->wmcv, conf->watermark);
+        //ngx_http_image_resize = ngx_http_image_filter_get_str_value(r, conf->wmcv, conf->watermark);
         conf->watermark.data = ngx_pcalloc(r->pool, watermark_value.len + 1);
         ngx_cpystrn(conf->watermark.data, watermark_value.data, watermark_value.len+1);
 
